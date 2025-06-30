@@ -1,0 +1,6 @@
+torch==v2.5.1
+tqdm
+loguru
+gin-config
+torchmetrics
+adamw_bf16
