@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from .args import ModelArgs
 from .transformer import RankHead, FullARHead, SampledARHead
 
+# some of the code is taken from https://github.com/meta-recsys/generative-recommenders
 
 class RelativePositionalBias(nn.Module):
     def __init__(self, max_seq_len: int) -> None:

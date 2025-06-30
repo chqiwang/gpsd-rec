@@ -6,6 +6,7 @@ import torch.nn.functional as F
 
 from .args import ModelArgs
 
+# some of the code is taken from https://github.com/clabrugere/wukong-recommendation
 
 class MLP(nn.Sequential):
     def __init__(
