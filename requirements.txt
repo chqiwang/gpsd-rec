@@ -2,5 +2,5 @@ torch==v2.5.1
 tqdm
 loguru
 gin-config
-torchmetrics
+torcheval
 adamw_bf16
