@@ -149,7 +149,7 @@ class HSTU(nn.Module):
         input_cate_ids[torch.arange(batch_size), historical_len] = target_cate_id
         # segment id
         segment_ids = torch.zeros_like(input_item_ids)
-        segment_ids[:,historical_len] = 1
+        segment_ids[torch.arange(batch_size), historical_len] = 1
 
         seqlen = input_item_ids.shape[1]
         h = self.item_embeddings(input_item_ids) + self.cate_embeddings(input_cate_ids) + self.segment_embeddings(segment_ids)
