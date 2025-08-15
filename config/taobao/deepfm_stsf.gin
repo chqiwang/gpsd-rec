@@ -1,0 +1,35 @@
+train.data_path = "./dataset/taobao/ft_train_dataset.txt"
+train.batch_size=2048
+train.prefetch_factor=256
+
+train.learning_rate=5e-3
+train.min_learning_rate=5e-4
+train.warmup_steps=500
+train.max_grads_norm=1.0
+train.weight_decay=0.1
+
+train.ckpt_root_dir = "./output/taobao/"
+train.shuffle=True
+train.use_bf16=False
+train.epoch=10
+train.load_ckpt="./output/taobao/l4h64a4_pretrain/"
+train.load_params=".*item_embeddings.*"
+train.frozen_params=".*item_embeddings.*"
+train.model_cls=@DeepFM
+train.eval_steps=100
+
+eval.data_path = "./dataset/taobao/ft_eval_dataset.txt"
+eval.max_steps=-1
+eval.batch_size=2048
+eval.prefetch_factor=256
+
+ItemTokenizer.table_path = "./dataset/taobao/item2index.txt" 
+CateTokenizer.table_path = "./dataset/taobao/cate2index.txt"
+
+SeqRecDataset.max_seq_len = 200
+
+ModelArgs.item_ar_loss_weight = 0
+ModelArgs.cate_ar_loss_weight = 0
+ModelArgs.rank_loss_weight = 1
+ModelArgs.dim = 64
+ModelArgs.n_layers = 4
