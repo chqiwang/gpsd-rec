@@ -26,6 +26,27 @@ mv meta_Grocery_and_Gourmet_Food.json dataset/amazon_food/
 python dataset/preprocessing_amazon_food.py
 ```
 
+### Amazon-elec
+```
+wget https://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Electronics_5.json.gz
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_v2/metaFiles2/meta_Electronics.json.gz
+gunzip reviews_Electronics_5.json.gz
+gunzip meta_Electronics.json.gz
+mkdir dataset/amazon_elec/
+mv reviews_Electronics_5.json dataset/amazon_elec/
+mv meta_Electronics.json dataset/amazon_elec/
+python dataset/preprocessing_amazon_elec.py
+```
+
+
+### Taobao
+Download the Taobao dataset from Alibaba Tianchi platform (https://tianchi.aliyun.com/dataset/649?lang=en-us).
+```
+mkdir dataset/taobao/
+mv UserBehavior.csv dataset/taobao/
+python dataset/preprocessing_taobao.py
+```
+
 
 ## Train model
 
@@ -48,6 +69,45 @@ Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
 - GPSD: Discriminative training
 ```
 python ./src/train.py --config ./config/amazon_food/[MODEL_ID]_stsf.gin
+```
+
+Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
+
+### Amazon-elec
+- Training baseline models
+```
+python ./src/train.py --config ./config/amazon_elec/[MODEL_ID].gin
+```
+
+- GPSD: Pretraining
+```
+python ./src/train.py --config ./config/amazon_elec/[MODEL_ID]_pretrain.gin
+```
+Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
+
+- GPSD: Discriminative training
+```
+python ./src/train.py --config ./config/amazon_elec/[MODEL_ID]_stsf.gin
+```
+
+Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
+
+
+### Taobao
+- Training baseline models
+```
+python ./src/train.py --config ./config/taobao/[MODEL_ID].gin
+```
+
+- GPSD: Pretraining
+```
+python ./src/train.py --config ./config/taobao/[MODEL_ID]_pretrain.gin
+```
+Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
+
+- GPSD: Discriminative training
+```
+python ./src/train.py --config ./config/taobao/[MODEL_ID]_stsf.gin
 ```
 
 Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
