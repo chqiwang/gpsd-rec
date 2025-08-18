@@ -50,68 +50,32 @@ python dataset/preprocessing_taobao.py
 
 ## Train model
 
-Available MODEL_IDs: deepfm, din, dien, dmin, l4h32a4, l4h64a4, l4h128a4, l4h256a4
+Replace `[MODEL_ID] and [DATASET_ID]` placeholders with your desired values in the following commands before running.
+
+|  Placeholder  | Options  |
+|  ----  | ----  |
+|  `MODEL_ID`    | deepfm, din, dien, dmin, l4h32a4, l4h64a4, l4h128a4, l4h256a4 |
+| `DATASET_ID`   | amazon_food, amazon_elec, taobao |
 
 Note: l4h32a4, l4h64a4 and l4h128a4, l4h256a4 are Transformer-based models.
 
-### Amazon-food
-- Training baseline models
+### Training Baseline Models
 ```
-python ./src/train.py --config ./config/amazon_food/[MODEL_ID].gin
-```
-
-- GPSD: Pretraining
-```
-python ./src/train.py --config ./config/amazon_food/[MODEL_ID]_pretrain.gin
-```
-Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
-
-- GPSD: Discriminative training
-```
-python ./src/train.py --config ./config/amazon_food/[MODEL_ID]_stsf.gin
+python ./src/train.py --config ./config/[DATASET_ID]/[MODEL_ID].gin
 ```
 
-Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
+### GPSD: Pretraining
+```
+python ./src/train.py --config ./config/[DATASET_ID]/[MODEL_ID]_pretrain.gin
+```
+Available values of `MODEL_ID` for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
 
-### Amazon-elec
-- Training baseline models
+### GPSD: Discriminative training
 ```
-python ./src/train.py --config ./config/amazon_elec/[MODEL_ID].gin
-```
-
-- GPSD: Pretraining
-```
-python ./src/train.py --config ./config/amazon_elec/[MODEL_ID]_pretrain.gin
-```
-Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
-
-- GPSD: Discriminative training
-```
-python ./src/train.py --config ./config/amazon_elec/[MODEL_ID]_stsf.gin
+python ./src/train.py --config ./config/[DATASET_ID]/[MODEL_ID]_stsf.gin
 ```
 
-Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
-
-
-### Taobao
-- Training baseline models
-```
-python ./src/train.py --config ./config/taobao/[MODEL_ID].gin
-```
-
-- GPSD: Pretraining
-```
-python ./src/train.py --config ./config/taobao/[MODEL_ID]_pretrain.gin
-```
-Available MODEL_IDs for pretraining are: l4h32a4, l4h64a4, l4h128a4, l4h256a4
-
-- GPSD: Discriminative training
-```
-python ./src/train.py --config ./config/taobao/[MODEL_ID]_stsf.gin
-```
-
-Note: remember to replace the `[MODEL_ID]` placeholder with your desired value.
-
+Note: remember to replace `[MODEL_ID]` and `[DATASET_ID]` placeholder with your desired values.
 
 ## Monitor Metrics
 To monitor the training metrics, run the following command
