@@ -1,3 +1,5 @@
+
+
 # Official code of GPSD
 
 ## GPSD
@@ -42,8 +44,8 @@ python dataset/preprocessing_amazon_elec.py
 ### Taobao
 Download the Taobao dataset from Alibaba Tianchi platform (https://tianchi.aliyun.com/dataset/649?lang=en-us).
 ```
-mkdir dataset/taobao/
-mv UserBehavior.csv dataset/taobao/
+mkdir taobao/
+mv UserBehavior.csv taobao/
 python dataset/preprocessing_taobao.py
 ```
 
